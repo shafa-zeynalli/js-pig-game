@@ -1,0 +1,51 @@
+body {
+  background: rgba(7, 58, 58, 0.938);
+  color: #fff;
+}
+#game {
+  margin: auto;
+  background: rgba(69, 126, 126, 0.938);
+  padding: 15px;
+  width: 400px;
+  text-align: center;
+  border: 1px solid rgb(42, 197, 94);
+}
+h1 {
+  color: #fff;
+  border: 1px solid rgb(42, 197, 94);
+  padding: 10px;
+  font-size: 150%;
+}
+#number1,
+#number2,
+#operator {
+  font-size: 130%;
+  padding: 10px;
+}
+#result {
+  width: 100px;
+  padding: 5px;
+}
+#answer {
+  width: 100px;
+  color: #fff;
+  border: none;
+  padding: 7px;
+  background: green;
+}
+#answer:hover {
+  background: #007f5f;
+}
+#true,
+#false {
+  display: inline-block;
+  padding: 5px 15px;
+  margin: 10px 5px;
+  font-size: 150%;
+}
+#true {
+  background: green;
+}
+#false {
+  background: red;
+}
