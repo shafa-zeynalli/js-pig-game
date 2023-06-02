@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: rgba(7, 58, 58, 0.938);
+            color: #fff;
+        }
+        #game{
+            margin: auto;
+            background:rgba(69, 126, 126, 0.938) ;
+            padding: 15px;
+            width: 400px;
+            text-align: center;
+            border: 1px solid rgb(42, 197, 94);
+        }
+        h1{
+            color: #fff;
+            border: 1px solid rgb(42, 197, 94);
+            padding: 10px  ;
+            font-size: 150%;
+        }
+        #Number1, #Number2, #Operator{
+            font-size: 130%;
+            padding: 10px;
+        }
+        #result{
+            width: 100px;
+            padding: 5px;
+        }
+        #answer{
+            width: 100px;
+            color: #fff;
+            border: none;
+            padding: 7px;
+            background: green;
+        }
+        #answer:hover{
+            background: #007f5f;
+        }
+        #True, #False{
+            display: inline-block;
+            padding: 5px 15px;
+            margin: 10px 5px;
+            font-size: 150%;
+        }
+        #True{background: green;}
+        #False{background: red;}
+    </style>
+</head>
+<body>
+    <div id="game">
+        <h1>Mini Hesablama Oyunu</h1>
+        <span id="Number1">0</span>
+        <span id="Operator">*</span>
+        <span id="Number2">0</span>
+        <span>=</span>
+        <input type="text"  id="result">
+        <button id="answer" type="button">Cevapla</button>
+        <div style="clear: both;"></div>
+        <div id="True">0</div>
+        <div id="False">0</div>
+        <div style="clear: both;"></div>
+    </div>
+
+
+    <script>
+
+        var Number1, Number2, Operator, Result, Answer, True, False;
+
+        Number1 = document.getElementById('Number1');
+        Number2 = document.getElementById('Number2');
+        Operator = document.getElementById('Operator');
+        Result = document.getElementById('result');
+        Answer = document.getElementById('answer');
+        True = document.getElementById('True');
+        False= document.getElementById('False');
+
+
+     function RandomNumber(max,min){
+        var number = Math.floor(Math.random()*(max-min)+ min);
+        return number;
+     } 
+
+     function newQuestion(){ 
+        var operation = ['+','-','/','*'];
+
+        Operator.textContent=operation[RandomNumber(0,4)];
+        Number1.textContent=RandomNumber(0,50);
+        Number2.textContent=RandomNumber(0,50);
+
+        if( Operator.textContent=='/'){
+            while(true){
+                Number2.textContent=RandomNumber(0,50);
+                if(Number1.textContent%Number2.textContent==0){
+                    break
+                }
+            }
+        }
+     }
+      window.onload= function (){newQuestion()};
+
+      Answer.onclick= function(){
+        var ans, n1, n2;
+        n1=Number(Number1.textContent);
+        n2=Number(Number2.textContent);
+
+        switch(Operator.textContent){
+            case '+': ans=n1+n2; break; 
+            case '-': ans=n1-n2; break; 
+            case '/': ans=n1/n2; break; 
+            case '*': ans=n1*n2; break; 
+            default: break;
+        }
+
+        if(result.value==ans){
+            True.textContent=Number(True.textContent) +1;
+        }else{
+            False.textContent=Number(False.textContent) +1;
+        }
+
+        newQuestion();
+      }
+
+    </script>
+</body>
+</html>
